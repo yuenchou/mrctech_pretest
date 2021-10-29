@@ -1,24 +1,32 @@
-import logo from './logo.svg';
+import React, {useState} from 'react'
 import './App.css';
+import SearchBar from './components/SearchBar';
+import ImageSlider from './components/ImageSlider';
+import CountDown from './components/CountDown';
+import ProductList from './components/ProductList';
+import ScrollButton from './components/ScrollButton';
 
 function App() {
+  const [searchTerm, setSearchTerm] = useState("")
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <>
+        <div className="container">
+          <div className="search">
+            <SearchBar setSearchTerm={setSearchTerm}/>
+          </div>
+          <div>
+            <ImageSlider/>
+          </div>
+          <div className="countDown">
+            <CountDown/>
+          </div>
+          <div className="productList">
+            <ProductList searchTerm={searchTerm}/>
+          </div>
+        </div>
+        <ScrollButton/>
+      </>
   );
 }
 
